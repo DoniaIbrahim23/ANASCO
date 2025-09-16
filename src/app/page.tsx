@@ -25,8 +25,7 @@ interface StatsData {
   title: string;
   value: string;
   change: string;
-   type: string;
-
+  type: string;  
 }
 
 interface LineChartDataItem {
@@ -76,12 +75,13 @@ const CustomLineChartTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
+// Start of the main component
 export default function Dashboard() {
   const statsData: StatsData[] = mockData.stats;
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
   const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
   const barChartData: BarChartDataItem[] = mockData.trafficByDeviceData;
- const donutChartData = mockData.trafficByLocationData as DonutChartDataItem[];
+  const donutChartData = mockData.trafficByLocationData as DonutChartDataItem[];
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -194,7 +194,7 @@ export default function Dashboard() {
                 <div className="flex justify-center items-center">
                   <ResponsiveContainer width="50%" height={250}>
                     <PieChart>
-                      <Pie
+                      <Pie<DonutChartDataItem>
                         data={donutChartData}
                         cx="50%"
                         cy="50%"
