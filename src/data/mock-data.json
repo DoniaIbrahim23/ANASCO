@@ -1,0 +1,125 @@
+{
+  "stats": [
+    {
+      "title": "Views",
+      "value": "721K",
+      "change": "+11.01%",
+      "type": "positive"
+    },
+    {
+      "title": "Visits",
+      "value": "367K",
+      "change": "+0.03%",
+      "type": "positive"
+    },
+    {
+      "title": "New Users",
+      "value": "1,156",
+      "change": "+15.03%",
+      "type": "positive"
+    },
+    {
+      "title": "Active Users",
+      "value": "239K",
+      "change": "+6.00%",
+      "type": "positive"
+    }
+  ],
+  "trafficLineChart": [
+    { "month": "Jan", "current": 700000, "previous": 1200000 },
+    { "month": "Feb", "current": 1000000, "previous": 1400000 },
+    { "month": "Mar", "current": 1700000, "previous": 1800000 },
+    { "month": "Apr", "current": 1000000, "previous": 1200000 },
+    { "month": "May", "current": 1500000, "previous": 1800000 },
+    { "month": "Jun", "current": 2000000, "previous": 2000000 },
+    { "month": "Jul", "current": 2200000, "previous": 1900000 }
+  ],
+  "trafficByWebsiteData": [
+    { "name": "Google", "value": 80 },
+    { "name": "YouTube", "value": 70 },
+    { "name": "Instagram", "value": 60 },
+    { "name": "Pinterest", "value": 50 },
+    { "name": "Facebook", "value": 40 },
+    { "name": "Twitter", "value": 30 },
+    { "name": "Tumblr", "value": 20 }
+  ],
+  "trafficByDeviceData": [
+    { "name": "Linux", "value": 18 },
+    { "name": "Mac", "value": 22 },
+    { "name": "iOS", "value": 19 },
+    { "name": "Windows", "value": 25 },
+    { "name": "Android", "value": 8 },
+    { "name": "Other", "value": 22 }
+  ],
+  "trafficByLocationData": [
+    { "name": "United States", "value": 38.6 },
+    { "name": "Canada", "value": 22.5 },
+    { "name": "Mexico", "value": 30.8 },
+    { "name": "Other", "value": 8.1 }
+  ],
+
+  "barChartData": [
+    { "name": "Mon", "sales": 400, "revenue": 240 },
+    { "name": "Tue", "sales": 300, "revenue": 139 },
+    { "name": "Wed", "sales": 200, "revenue": 980 },
+    { "name": "Thu", "sales": 278, "revenue": 390 },
+    { "name": "Fri", "sales": 189, "revenue": 480 },
+    { "name": "Sat", "sales": 239, "revenue": 380 },
+    { "name": "Sun", "sales": 349, "revenue": 430 }
+  ],
+
+  "lineChartData": [
+    { "month": "Jan", "views": 4000, "visits": 2400 },
+    { "month": "Feb", "views": 3000, "visits": 1398 },
+    { "month": "Mar", "views": 2000, "visits": 9800 },
+    { "month": "Apr", "views": 2780, "visits": 3908 },
+    { "month": "May", "views": 1890, "visits": 4800 },
+    { "month": "Jun", "views": 2390, "visits": 3800 },
+    { "month": "Jul", "views": 3490, "visits": 4300 }
+  ],
+
+  "donutChartData": [
+    { "name": "Group A", "value": 400 },
+    { "name": "Group B", "value": 300 },
+    { "name": "Group C", "value": 300 },
+    { "name": "Group D", "value": 200 }
+  ],
+
+  "notifications": [
+    { "id": 1, "message": "New user registered", "time": "2m ago" },
+    { "id": 2, "message": "New order received", "time": "10m ago" },
+    { "id": 3, "message": "Server rebooted", "time": "1h ago" },
+    { "id": 4, "message": "New comment on blog", "time": "3h ago" }
+  ],
+
+  "contacts": [
+    { "id": 1, "name": "Alice Johnson", "avatar": "/avatars/alice.jpg" },
+    { "id": 2, "name": "Bob Smith" },
+    { "id": 3, "name": "Charlie Brown" },
+    { "id": 4, "name": "Diana Prince" }
+  ],
+  "weeklyTraffic": [
+    { "month": "Jan", "Current Week": 7000, "Previous Week": 12000 },
+    { "month": "Feb", "Current Week": 10000, "Previous Week": 14000 },
+    { "month": "Mar", "Current Week": 17000, "Previous Week": 18000 },
+    { "month": "Apr", "Current Week": 10000, "Previous Week": 12000 },
+    { "month": "May", "Current Week": 15000, "Previous Week": 18000 },
+    { "month": "Jun", "Current Week": 20000, "Previous Week": 20000 },
+    { "month": "Jul", "Current Week": 22000, "Previous Week": 19000 }
+  ],
+  "trafficByWebsite": [
+    { "name": "Google", "value": 80 },
+    { "name": "YouTube", "value": 70 },
+    { "name": "Instagram", "value": 60 },
+    { "name": "Pinterest", "value": 50 },
+    { "name": "Facebook", "value": 40 },
+    { "name": "Twitter", "value": 30 },
+    { "name": "Tumblr", "value": 20 }
+  ],
+  "trafficByDevice": [
+    { "name": "Desktop", "value": 400 },
+    { "name": "Mobile", "value": 300 },
+    { "name": "Tablet", "value": 200 },
+    { "name": "Other", "value": 100 }
+  ]
+}
