@@ -1,3 +1,4 @@
+
 "use client";
 
 import Header from "../Components/Header/Header";
@@ -25,7 +26,7 @@ interface StatsData {
   title: string;
   value: string;
   change: string;
-  type:string;  
+  type: "positive" | "negative";
 }
 
 interface LineChartDataItem {
@@ -81,7 +82,14 @@ export default function Dashboard() {
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
   const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
   const barChartData: BarChartDataItem[] = mockData.trafficByDeviceData;
-  const donutChartData = mockData.trafficByLocationData as DonutChartDataItem[];
+
+  // Static data for the Donut Chart as requested
+  const donutChartData: DonutChartDataItem[] = [
+    { name: "United States", value: 38.6 },
+    { name: "Canada", value: 22.5 },
+    { name: "Mexico", value: 30.8 },
+    { name: "Other", value: 8.1 },
+  ];
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -194,8 +202,13 @@ export default function Dashboard() {
                 <div className="flex justify-center items-center">
                   <ResponsiveContainer width="50%" height={250}>
                     <PieChart>
-              <Pie
-  data={donutChartData}
+                     <Pie
+  data={[
+    { name: "United States", value: 38.6 },
+    { name: "Canada", value: 22.5 },
+    { name: "Mexico", value: 30.8 },
+    { name: "Other", value: 8.1 },
+  ]}
   cx="50%"
   cy="50%"
   innerRadius={80}
@@ -203,32 +216,40 @@ export default function Dashboard() {
   paddingAngle={5}
   dataKey="value"
 >
-  {donutChartData.map((entry, index) => (
+  {[
+    { name: "United States", value: 38.6 },
+    { name: "Canada", value: 22.5 },
+    { name: "Mexico", value: 30.8 },
+    { name: "Other", value: 8.1 },
+  ].map((entry, index) => (
     <Cell
       key={`cell-${index}`}
       fill={DONUT_COLORS[index % DONUT_COLORS.length]}
     />
   ))}
 </Pie>
-
                       <Tooltip />
                     </PieChart>
                   </ResponsiveContainer>
                   <div className="w-1/2 text-sm text-gray-600">
                     <ul className="space-y-4">
-                      {donutChartData.map((item, index) => (
-                        <li key={item.name} className="flex items-center gap-2">
-                          <span
-                            className="w-2 h-2 rounded-full"
-                            style={{
-                              backgroundColor:
-                                DONUT_COLORS[index % DONUT_COLORS.length],
-                            }}
-                          ></span>
-                          <span className="font-medium text-gray-900">{item.name}</span>
-                          <span className="ml-auto text-gray-500">{item.value}%</span>
-                        </li>
-                      ))}
+                     {[
+  { name: "United States", value: 38.6 },
+  { name: "Canada", value: 22.5 },
+  { name: "Mexico", value: 30.8 },
+  { name: "Other", value: 8.1 },
+].map((item, index) => (
+  <li key={item.name} className="flex items-center gap-2">
+    <span
+      className="w-2 h-2 rounded-full"
+      style={{
+        backgroundColor: DONUT_COLORS[index % DONUT_COLORS.length],
+      }}
+    ></span>
+    <span className="font-medium text-gray-900">{item.name}</span>
+    <span className="ml-auto text-gray-500">{item.value}%</span>
+  </li>
+))}
                     </ul>
                   </div>
                 </div>
