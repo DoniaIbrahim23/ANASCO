@@ -25,7 +25,7 @@ interface StatsData {
   title: string;
   value: string;
   change: string;
-  trend: "up" | "down";
+  type: "positive" | "negative";
 }
 
 interface LineChartDataItem {
@@ -75,7 +75,6 @@ const CustomLineChartTooltip = ({ active, payload, label }: any) => {
   return null;
 };
 
-// Start of the main component
 export default function Dashboard() {
   const statsData: StatsData[] = mockData.stats;
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
