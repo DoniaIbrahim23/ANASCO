@@ -1,4 +1,3 @@
-
 "use client";
 
 import Header from "../Components/Header/Header";
@@ -78,7 +77,20 @@ const CustomLineChartTooltip = ({ active, payload, label }: any) => {
 
 // Start of the main component
 export default function Dashboard() {
-  const statsData: StatsData[] = mockData.stats;
+  // const statsData: StatsData[] = mockData.stats;
+
+  type Stat = {
+  title: string;
+  value: string;
+  change: string;
+};
+
+  const statsData: Stat[] = mockData.stats.map((item) => ({
+  title: item.title,
+  value: item.value,
+  change: item.change,
+}));
+
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
   const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
   const barChartData: BarChartDataItem[] = mockData.trafficByDeviceData;
@@ -233,23 +245,19 @@ export default function Dashboard() {
                   </ResponsiveContainer>
                   <div className="w-1/2 text-sm text-gray-600">
                     <ul className="space-y-4">
-                     {[
-  { name: "United States", value: 38.6 },
-  { name: "Canada", value: 22.5 },
-  { name: "Mexico", value: 30.8 },
-  { name: "Other", value: 8.1 },
-].map((item, index) => (
-  <li key={item.name} className="flex items-center gap-2">
-    <span
-      className="w-2 h-2 rounded-full"
-      style={{
-        backgroundColor: DONUT_COLORS[index % DONUT_COLORS.length],
-      }}
-    ></span>
-    <span className="font-medium text-gray-900">{item.name}</span>
-    <span className="ml-auto text-gray-500">{item.value}%</span>
-  </li>
-))}
+                      {donutChartData.map((item, index) => (
+                        <li key={item.name} className="flex items-center gap-2">
+                          <span
+                            className="w-2 h-2 rounded-full"
+                            style={{
+                              backgroundColor:
+                                DONUT_COLORS[index % DONUT_COLORS.length],
+                            }}
+                          ></span>
+                          <span className="font-medium text-gray-900">{item.name}</span>
+                          <span className="ml-auto text-gray-500">{item.value}%</span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                 </div>
