@@ -81,7 +81,7 @@ export default function Dashboard() {
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
   const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
   const barChartData: BarChartDataItem[] = mockData.trafficByDeviceData;
-  const donutChartData: DonutChartDataItem[] = mockData.trafficByLocationData;
+ const donutChartData = mockData.trafficByLocationData as DonutChartDataItem[];
 
   return (
     <div className="flex min-h-screen bg-white">
