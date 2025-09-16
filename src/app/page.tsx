@@ -25,7 +25,7 @@ interface StatsData {
   title: string;
   value: string;
   change: string;
-  type: string;  
+  type: "positive" | "negative";
 }
 
 interface LineChartDataItem {
