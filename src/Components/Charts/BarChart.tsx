@@ -4,6 +4,17 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 import mockData from "../../data/mock-data.json";
 import { Search, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
+interface LineChartDataItem {
+  month: string;
+  current: number;
+  previous: number;
+}
+
+interface TrafficByWebsiteDataItem {
+  name: string;
+  value: number;
+}
+
 const platformIcons = {
   Google: <Search className="w-4 h-4 text-gray-600" />,
   YouTube: <Youtube className="w-4 h-4 text-red-500" />,
@@ -29,15 +40,15 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 const BarCharts: React.FC = () => {
-  const lineChartData = mockData.trafficLineChart;
-  const trafficByWebsiteData = mockData.trafficByWebsiteData;
+  const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
+  const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-gray-900">Total Users</h2>
-         <h2 className="text-xl text-gray-500">Total Projects</h2>
+        <h2 className="text-xl text-gray-500">Total Projects</h2>
         <div className="flex items-center gap-4 text-sm text-gray-500">
           <span className="flex items-center gap-1">
             <span className="w-2 h-2 rounded-full bg-gray-900"></span>

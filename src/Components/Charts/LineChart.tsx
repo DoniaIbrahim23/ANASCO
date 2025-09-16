@@ -11,7 +11,21 @@ import {
   YAxis,
   Tooltip,
 } from "recharts";
-import mockData from "../../data/mock-data.json";
+
+interface BarChartDataItem {
+  name: string;
+  value: number;
+}
+
+interface DonutChartDataItem {
+  name: string;
+  value: number;
+}
+
+interface ChartsProps {
+  barChartData: BarChartDataItem[];
+  donutChartData: DonutChartDataItem[];
+}
 
 const DONUT_COLORS = ["#94C8A6", "#1C1C1E", "#B0B0C0", "#F4F4F6"];
 const BAR_COLORS = [
@@ -23,13 +37,10 @@ const BAR_COLORS = [
   "#63AC8A",
 ];
 
-const DeviceLocationCharts: React.FC = () => {
-  const barChartData = mockData.trafficByDeviceData;
-  const donutChartData = mockData.trafficByLocationData;
-
+const DeviceLocationCharts: React.FC<ChartsProps> = ({ barChartData, donutChartData }) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-      {/*  Traffic by Device */}
+      {/*  Traffic by Device */}
       <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
         <h3 className="text-xl font-bold mb-4 text-black">Traffic by Device</h3>
         <ResponsiveContainer width="100%" height={250}>
@@ -77,7 +88,6 @@ const DeviceLocationCharts: React.FC = () => {
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
-          {/* Right Side*/}
           <div className="w-1/2 text-sm text-gray-600">
             <ul className="space-y-4">
               {donutChartData.map((item, index) => (
