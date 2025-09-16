@@ -4,10 +4,6 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 import mockData from "../../data/mock-data.json";
 import { Search, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
 
-
-
-// تم إضافة هذه السطور لتحديد أنواع البيانات
->>>>>>> 905656f471ee66920256535f80d28de1db956269
 interface LineChartDataItem {
   month: string;
   current: number;
@@ -44,7 +40,6 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 const BarCharts: React.FC = () => {
-
   const lineChartData: LineChartDataItem[] = mockData.trafficLineChart;
   const trafficByWebsiteData: TrafficByWebsiteDataItem[] = mockData.trafficByWebsiteData;
 
