@@ -2,113 +2,73 @@
 
 import {
   ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
+  LineChart,
+  Line,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
 } from "recharts";
 
-interface BarChartDataItem {
-  name: string;
-  value: number;
+interface LineChartData {
+  month: string;
+  current: number;
+  previous: number;
 }
 
-interface DonutChartDataItem {
-  name: string;
-  value: number;
+interface CustomLineChartProps {
+  data: LineChartData[];
 }
 
-interface ChartsProps {
-  barChartData: BarChartDataItem[];
-  donutChartData: DonutChartDataItem[];
-}
-
-const DONUT_COLORS = ["#94C8A6", "#1C1C1E", "#B0B0C0", "#F4F4F6"];
-const BAR_COLORS = [
-  "#90A5F9",
-  "#94C8A6",
-  "#1C1C1E",
-  "#A4C2E0",
-  "#B0B0C0",
-  "#63AC8A",
-];
-
-const DeviceLocationCharts: React.FC<ChartsProps> = ({ barChartData, donutChartData }) => {
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
-      {/*  Traffic by Device */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-        <h3 className="text-xl font-bold mb-4 text-black">Traffic by Device</h3>
-        <ResponsiveContainer width="100%" height={250}>
-          <BarChart data={barChartData}>
-            <XAxis dataKey="name" axisLine={false} tickLine={false} />
-            <YAxis axisLine={false} tickLine={false} />
-            <Tooltip />
-            <Bar dataKey="value" radius={[10, 10, 0, 0]}>
-              {barChartData.map((entry, index) => (
-                <Cell
-                  key={`cell-${index}`}
-                  fill={BAR_COLORS[index % BAR_COLORS.length]}
-                />
-              ))}
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      {/*Traffic by Location */}
-      <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
-        <h3 className="text-xl font-bold mb-4 text-black">
-          Traffic by Location
-        </h3>
-        <div className="flex justify-center items-center">
-          {/* Donut Chart */}
-          <ResponsiveContainer width="50%" height={250}>
-            <PieChart>
-              <Pie
-                data={donutChartData}
-                cx="50%"
-                cy="50%"
-                innerRadius={80}
-                outerRadius={100}
-                paddingAngle={5}
-                dataKey="value"
-              >
-                {donutChartData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={DONUT_COLORS[index % DONUT_COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-          <div className="w-1/2 text-sm text-gray-600">
-            <ul className="space-y-4">
-              {donutChartData.map((item, index) => (
-                <li key={item.name} className="flex items-center gap-2">
-                  <span
-                    className="w-2 h-2 rounded-full"
-                    style={{
-                      backgroundColor:
-                        DONUT_COLORS[index % DONUT_COLORS.length],
-                    }}
-                  ></span>
-                  <span className="font-medium text-gray-900">{item.name}</span>
-                  <span className="ml-auto text-gray-500">{item.value}%</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+const CustomLineChart: React.FC<CustomLineChartProps> = ({ data }) => {
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-gray-800 text-white p-2 rounded-md text-xs shadow-lg">
+          <p className="font-bold">{label}</p>
+          {payload.map((entry: any, index: number) => (
+            <p key={`item-${index}`} style={{ color: entry.color }}>
+              {`${entry.name}: ${entry.value}`}
+            </p>
+          ))}
         </div>
-      </div>
+      );
+    }
+    return null;
+  };
+
+  return (
+    <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+      <h3 className="text-xl font-bold mb-4 text-black">Users Over Time</h3>
+      <ResponsiveContainer width="100%" height={250}>
+        <LineChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid vertical={false} strokeDasharray="3 3" stroke="#e0e0e0" />
+          <XAxis dataKey="month" tickLine={false} axisLine={false} />
+          <YAxis tickLine={false} axisLine={false} />
+          <Tooltip content={<CustomTooltip />} />
+          <Line
+            type="monotone"
+            dataKey="current"
+            stroke="#1C1C1E"
+            strokeWidth={2}
+            dot={{ r: 4 }}
+            activeDot={{ r: 6, stroke: '#1C1C1E', strokeWidth: 2, fill: '#fff' }}
+            name="Current Week"
+          />
+          <Line
+            type="monotone"
+            dataKey="previous"
+            stroke="#A4C2E0"
+            strokeWidth={2}
+            strokeDasharray="5 5"
+            dot={{ r: 4 }}
+            activeDot={{ r: 6, stroke: '#A4C2E0', strokeWidth: 2, fill: '#fff' }}
+            name="Previous Week"
+          />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };
 
-export default DeviceLocationCharts;
+export default CustomLineChart;
